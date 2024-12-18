@@ -7,30 +7,34 @@ specifies that any user authenticated via an API key can "create", "read",
 "update", and "delete" any "Todo" records.
 =========================================================================*/
 const schema = a.schema({
-  Todo: a
-    .model({
-      content: a.string(),
-    }),
-        //core
+  //core
+  Global: a.model({
+    key: a.string(), //企业微信suite_ticket
+    value: a.string(),
+    timestamp: a.integer(),
+  }),
   Tenant: a.model({
+    is_deleted: a.boolean().default(false),
     tenant_name: a.string(),
-    douyin_openid: a.string(),
+    corpid: a.string(),
     quota_video_generation: a.integer(),
     left_video_generation: a.integer(),
   }),
   Channel: a.model({
+    is_deleted: a.boolean().default(false),
     tenant_id: a.string(),
     channel_id: a.string(), //来自渠道的原始id
+    channel_secret: a.string(),
     channel_name: a.string(),
     channel_type: a.string(),
     channel_status: a.string(),
-    douyin_access_token: a.string(),
-    douyin_access_expires_in: a.integer(),
-    douyin_refresh_expires_in: a.integer(),
-    douyin_refresh_token: a.string(),
-    douyin_scope: a.string(),
-    douyin_client_token: a.string(),
-    douyin_client_expires_in: a.integer(),
+    scope: a.string().array(),
+    access_token: a.string(),
+    expires_in: a.integer(),
+    refresh_expires_in: a.integer(),
+    refresh_token: a.string(),
+    client_token: a.string(),
+    client_expires_in: a.integer(),
   }),
   Content: a.model({
     tenant_id: a.string(),
