@@ -1,4 +1,4 @@
-import config from '@/amplifyconfiguration.json';
+import config from '@/amplify_outputs.json';
 import React from 'react';
 import { Amplify } from 'aws-amplify';
 import { fetchAuthSession } from 'aws-amplify/auth';
